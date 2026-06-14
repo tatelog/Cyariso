@@ -28,10 +28,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Pages
+        # 初回の Pages 有効化は Settings → Pages → Source: GitHub Actions で手動実施が必要
+        # (GITHUB_TOKEN では Pages サイトを新規作成できないため)。有効化後は自動でデプロイされる。
         uses: actions/configure-pages@v5
-        with:
-          # Pages 未設定でもワークフローから自動で有効化(GitHub Actions ビルド)する。
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
