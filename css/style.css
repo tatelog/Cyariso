@@ -11,8 +11,22 @@ html, body {
   color: var(--ink);
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
+  /* 画像・canvas の長押し保存／選択／ドラッグを抑止する */
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
+
+/* canvas と画像は長押しメニュー・ドラッグ保存を不可にする */
+#game, img, svg {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: auto;
+}
+img, svg { -webkit-user-drag: none; }
 
 #stage-wrap {
   position: relative;

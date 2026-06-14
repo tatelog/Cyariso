@@ -7,7 +7,13 @@
   <title>Cyariso - チャリ走風オートランアクション</title>
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="./assets/icon.svg" />
+  <link rel="icon" href="./assets/icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <!-- iOS をホーム画面に追加した際にフルスクリーン PWA として起動する -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Cyariso" />
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
@@ -31,6 +37,7 @@
       <p id="title-high">ハイスコア: 0</p>
       <p id="title-coins">所持コイン: 0</p>
       <button id="btn-to-select" class="primary">スタート</button>
+      <button id="btn-install" hidden>📲 アプリとしてインストール</button>
     </div>
 
     <!-- 乗り物・ステージ選択 -->

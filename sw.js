@@ -1,11 +1,13 @@
 // Service Worker: 全静的アセットを precache し、オフラインでもプレイ可能にする。
-const CACHE = 'cyariso-v1';
+const CACHE = 'cyariso-v2';
 const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
   './css/style.css',
   './assets/icon.svg',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
   './js/main.js',
   './js/game.js',
   './js/config.js',

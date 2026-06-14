@@ -149,6 +149,30 @@ function loop(now) {
 showScreen('title');
 requestAnimationFrame(loop);
 
+// ---- 画像/canvas のダウンロード防止 ----
+// 長押しメニュー(コンテキストメニュー)とドラッグ保存を抑止する。
+window.addEventListener('contextmenu', (e) => e.preventDefault());
+window.addEventListener('dragstart', (e) => e.preventDefault());
+
+// ---- PWA: インストールボタン ----
+let deferredPrompt = null;
+const installBtn = document.getElementById('btn-install');
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (installBtn) installBtn.hidden = false;
+});
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installBtn.hidden = true;
+  });
+}
+window.addEventListener('appinstalled', () => { if (installBtn) installBtn.hidden = true; });
+
 // ---- PWA: Service Worker 登録 ----
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
