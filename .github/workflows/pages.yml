@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - claude/chari-sou-research-ubfm7t
   workflow_dispatch:
 
 permissions:
