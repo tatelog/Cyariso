@@ -1,0 +1,20 @@
+{
+  "name": "Cyariso",
+  "short_name": "Cyariso",
+  "description": "チャリ走風のオートランアクション。タップでジャンプ、2段ジャンプで崖を越え、ライバルから逃げ切ろう。",
+  "lang": "ja",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#140f1d",
+  "theme_color": "#ff8c33",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

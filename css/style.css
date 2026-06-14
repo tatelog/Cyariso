@@ -1,0 +1,135 @@
+:root {
+  --orange: #ff8c33;
+  --ink: #2a2230;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #1a1622;
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Kaku Gothic ProN", sans-serif;
+  color: var(--ink);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#stage-wrap {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 30%, #2c2440, #140f1d);
+}
+
+#game {
+  width: min(100vw, 177.78vh); /* 16:9 維持 */
+  height: min(56.25vw, 100vh);
+  display: block;
+  image-rendering: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  touch-action: none;
+}
+
+/* ---- HUD ---- */
+#hud {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: none;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 20px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,.5);
+  pointer-events: none;
+}
+#hud.visible { display: flex; }
+#hud-left span { margin-right: 14px; font-size: clamp(14px, 2.4vw, 22px); }
+#hud-stage { font-size: clamp(12px, 2vw, 18px); opacity: .9; }
+#hud-warning {
+  position: absolute;
+  top: 50px; left: 50%;
+  transform: translateX(-50%);
+  color: #ff4d4d;
+  font-size: clamp(14px, 2.6vw, 24px);
+  opacity: 0;
+  transition: opacity .15s;
+}
+
+/* ---- オーバーレイ ---- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+  background: rgba(255, 250, 240, .92);
+  border-radius: 8px;
+  overflow-y: auto;
+}
+.overlay.visible { display: flex; }
+
+.overlay h1 {
+  font-size: clamp(40px, 9vw, 96px);
+  margin: 0;
+  color: var(--orange);
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 0 #fff, 5px 5px 0 rgba(0,0,0,.12);
+}
+.overlay h2 { font-size: clamp(22px, 4.5vw, 36px); margin: 4px 0; }
+.overlay h3 { margin: 8px 0 2px; font-size: clamp(15px, 2.6vw, 20px); }
+.tagline { font-size: clamp(13px, 2.6vw, 18px); line-height: 1.6; }
+
+button {
+  font-family: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 26px;
+  font-size: clamp(14px, 2.6vw, 18px);
+  background: #efe6da;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform .08s;
+}
+button:active { transform: scale(.96); }
+button.primary {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 0 #d96e16;
+}
+.row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+
+/* ---- カード ---- */
+.cards { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; max-width: 720px; }
+.card {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 3px solid transparent;
+  text-align: left;
+}
+.card strong { font-size: 18px; }
+.card small { font-size: 12px; color: #6a6270; min-height: 30px; }
+.card em { font-size: 12px; font-style: normal; color: var(--orange); font-weight: 700; }
+.card.selected { border-color: var(--orange); }
+.card.locked { opacity: .6; }
+.card-swatch { width: 28px; height: 28px; border-radius: 8px; }
+.card.flash { animation: flash .3s; }
+@keyframes flash {
+  0%, 100% { background: #fff; }
+  50% { background: #ffd0d0; }
+}

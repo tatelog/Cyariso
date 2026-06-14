@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#ff8c33" />
+  <title>Cyariso - チャリ走風オートランアクション</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/icon.svg" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div id="stage-wrap">
+    <canvas id="game" width="960" height="540"></canvas>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div id="hud-left">
+        <span id="hud-score">SCORE 0</span>
+        <span id="hud-coins">🪙 0</span>
+      </div>
+      <div id="hud-stage">ステージ</div>
+      <div id="hud-warning">⚠ クロウが迫っている！</div>
+    </div>
+
+    <!-- タイトル -->
+    <div id="screen-title" class="overlay">
+      <h1>Cyariso</h1>
+      <p class="tagline">タップでジャンプ、2回タップで2段ジャンプ。<br>ライバル「クロウ」から逃げ切ろう！</p>
+      <p id="title-high">ハイスコア: 0</p>
+      <p id="title-coins">所持コイン: 0</p>
+      <button id="btn-to-select" class="primary">スタート</button>
+    </div>
+
+    <!-- 乗り物・ステージ選択 -->
+    <div id="screen-select" class="overlay">
+      <h2>のりもの＆ステージをえらぶ</h2>
+      <p id="select-coins">所持コイン: 0</p>
+      <h3>のりもの</h3>
+      <div id="vehicle-cards" class="cards"></div>
+      <h3>ステージ</h3>
+      <div id="stage-cards" class="cards"></div>
+      <div class="row">
+        <button id="btn-select-back">もどる</button>
+        <button id="btn-start" class="primary">はしる！</button>
+      </div>
+    </div>
+
+    <!-- クリア -->
+    <div id="screen-cleared" class="overlay">
+      <div id="cleared-text"></div>
+      <div class="row">
+        <button id="btn-next" class="primary">つぎのステージ</button>
+        <button id="btn-retry-go">もう一度</button>
+        <button id="btn-cleared-title">タイトル</button>
+      </div>
+    </div>
+
+    <!-- ゲームオーバー -->
+    <div id="screen-gameover" class="overlay">
+      <div id="gameover-text"></div>
+      <div class="row">
+        <button id="btn-retry-go2" class="primary">リトライ</button>
+        <button id="btn-gameover-title">タイトル</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
